@@ -1,5 +1,4 @@
 import React from 'react';
-import ProjectItem from "../projects/ProjectItem";
 import ProfileItem from "./ProfileItem";
 
 const Profile = (props) => {
