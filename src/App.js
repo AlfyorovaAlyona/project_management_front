@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import ProjectList from "./components/projects/ProjectList";
 import TaskList from "./components/tasks/TaskList";
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import Menu from "./components/menu/Menu";
+import SendHttpSample from "./components/samples/SendHttpSample"
+import Header from "./components/header/Header";
+import Profile from "./components/profile/Profile";
 
-
-class App extends Component {
-  render() {
+const App  = (props) => {
     return (
       <div>
-          <BrowserRouter>
-              <Menu/>
-              <div>
-                  <Route path='/projects' component={ProjectList}/>
-                  <Route path='/tasks' component={TaskList}/>
+        { /*<SendHttpSample/>*/}
+          <div className='app-wrapper'>
+            <Header/>
+            <Menu/>
+              <div className='content'>
+                <Route path='/profile' render={() => <Profile state={props.state.ProfilePage}/>} />
+                <Route path='/projects' render={() => <ProjectList state={props.state.MyProjectsPage}/>} />
+                <Route path='/tasks' render={() => <TaskList state={props.state.MyTasksPage}/>} />
               </div>
-          </BrowserRouter>
+          </div>
       </div>
     );
-  }
-}
+
+};
 
 export default App;

@@ -6,6 +6,8 @@ const ProjectItem= (props) => {
         <div className={`${styles.projectItem} ${styles.textColor}`}>
             id: {props.id}
             <br/>
+            name: {props.name}
+            <br/>
             creatorId: {props.creatorId}
             <br/>
             description: {props.description}
