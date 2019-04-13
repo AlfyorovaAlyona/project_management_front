@@ -7,17 +7,17 @@ import Menu from "./components/menu/Menu";
 import SendHttpSample from "./components/samples/SendHttpSample"
 import Header from "./components/header/Header";
 import Profile from "./components/profile/Profile";
+import ProjectListContainer from "./components/projects/ProjectListContainer";
 
 const App  = (props) => {
     return (
       <div>
-        { /*<SendHttpSample/>*/}
           <div className='app-wrapper'>
             <Header/>
             <Menu/>
               <div className='content'>
                 <Route path='/profile' render={() => <Profile state={props.state.ProfilePage}/>} />
-                <Route path='/projects' render={() => <ProjectList state={props.state.MyProjectsPage}/>} />
+                <Route path='/projects' render={() => <ProjectListContainer store={props.store}/>} />
                 <Route path='/tasks' render={() => <TaskList state={props.state.MyTasksPage}/>} />
               </div>
           </div>

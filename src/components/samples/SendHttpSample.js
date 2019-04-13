@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 class SendHttpSample extends Component {
     constructor() {
         super();
@@ -21,7 +20,7 @@ class SendHttpSample extends Component {
 
     handleClick () {
         console.log("Click");
-        axios.get("http://localhost:8080/user/1")
+        axios.get('http://localhost:8080/user/1')
             .then(response => {
                 console.log(response);
                 console.log(response.data);

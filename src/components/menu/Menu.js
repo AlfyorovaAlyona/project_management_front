@@ -7,11 +7,16 @@ const Menu = () => {
         <div className='sidebar'>
             <nav>
                 <div className={`${styles.sideBlock}`}>
-                    <NavLink to='/profile' className={`${styles.textColor} `}> Profile </NavLink>
+                    <NavLink to='/profile' className={`${styles.textColor}`}> Profile </NavLink>
+                </div>
+                <div className={`${styles.sideBlock}`}>
                     <NavLink to='/projects' className={`${styles.textColor}`}> MyProjects </NavLink>
+                </div>
+                <div className={`${styles.sideBlock}`}>
                     <NavLink to='/tasks' className={`${styles.textColor}`}> MyTasks </NavLink>
                 </div>
             </nav>
+
         </div>
     )
 };

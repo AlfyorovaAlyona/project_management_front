@@ -35,6 +35,15 @@ let state = {
                         projectId: 1,
                         deadline: "2019-04-31 23:00:43.573000",
                         description: "do nothing"
+                    },
+                    {
+                        id: 3,
+                        name: "bad",
+                        salary: 100,
+                        status: 0,
+                        projectId: 1,
+                        deadline: "2019-04-31 23:00:43.573000",
+                        description: "do nothing"
                     }
                 ]
             }
@@ -52,7 +61,15 @@ let state = {
                 status: 0,
                 projectId: 1,
                 deadline: "2019-04-31 23:00:43.573000",
-                description: "do something"
+                description: "do something",
+                users: [
+                    {
+                        userId: 1,
+                        name: "Alyona",
+                        surname: "Alfyorova",
+                        email: "@"
+                    }
+                ]
             }
         ]
     }

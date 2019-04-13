@@ -1,14 +1,30 @@
 import React from 'react';
 import TaskItem from './TaskItem';
+import ProfileItem from "../profile/ProfileItem";
 
 const TaskList = (props) => {
     let tasks = props.state.MyTasks
-                .map(task => <TaskItem id={task.id}
+                .map(task => {
+                    if (task.users != null)
+                    return <TaskItem   id={task.id}
                                        salary={task.salary}
                                        status={task.status}
                                        name={task.name}
                                        description={task.description}
-                                       deadline={task.deadline}/>);
+                                       deadline={task.deadline}
+                                       users={task.users
+                                                  .map(user => <ProfileItem userId={user.userId}
+                                                                            name={user.name}
+                                                                            surname={user.surname}
+                                                                            email={user.email}/>)
+                                       }/>;
+                    else return <TaskItem id={task.id}
+                                      salary={task.salary}
+                                      status={task.status}
+                                      name={task.name}
+                                      description={task.description}
+                                      deadline={task.deadline}/>
+                });
     return (
         <div>
             {tasks}

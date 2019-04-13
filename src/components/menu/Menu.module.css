@@ -1,8 +1,15 @@
 .sideBlock {
-    background-color: #9D4A27;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    margin-top: 3px;
+    display:block;
     text-align: center;
-    padding: 5px;
+    padding: .7em 1.5em;
 }
+
+.sideBlock:active { background: #F8B79B; }
+.sideBlock:hover { background: #9D4A27; }
 
 .textColor {
     color: black;
