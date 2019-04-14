@@ -1,6 +1,5 @@
-import React from 'react';
 import {connect} from "react-redux";
-import {deleteUnprocessedProjectCreator} from "../../redux/projectReducer";
+import {deleteFinishedProjectCreator} from "../../redux/projectReducer";
 import ProjectList from "./ProjectList";
 
 let mapStageToProps = (state) => {
@@ -11,8 +10,8 @@ let mapStageToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        deleteUnprocessedProject: (projectIdx) => {
-            dispatch(deleteUnprocessedProjectCreator(projectIdx))
+        deleteFinishedProject: (projectId) => {
+            dispatch(deleteFinishedProjectCreator(projectId))
         }
     }
 };

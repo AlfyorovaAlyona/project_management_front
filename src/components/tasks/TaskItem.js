@@ -9,6 +9,8 @@ const TaskItem = (props) => {
                 <br/>
                 name: {props.name}
                 <br/>
+                projectId: {props.projectId}
+                <br/>
                 deadline: {props.deadline}
                 <br/>
                 description: {props.description}
@@ -27,6 +29,8 @@ const TaskItem = (props) => {
                 id: {props.id}
                 <br/>
                 name: {props.name}
+                <br/>
+                projectId: {props.projectId}
                 <br/>
                 deadline: {props.deadline}
                 <br/>

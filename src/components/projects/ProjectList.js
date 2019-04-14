@@ -11,7 +11,7 @@ const ProjectList = (props) => {
                                               name={project.name}
                                               description={project.description}
                                               deadline={project.deadline}
-                                              deleteUnprocessedProject={props.deleteUnprocessedProject}
+                                              deleteFinishedProject={props.deleteFinishedProject}
                                               tasks={project.tasks
                                                  .map(task => <TaskItem id={task.id}
                                                                         salary={task.salary}

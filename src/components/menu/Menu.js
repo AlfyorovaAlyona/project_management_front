@@ -10,10 +10,10 @@ const Menu = () => {
                     <NavLink to='/profile' className={`${styles.textColor}`}> Profile </NavLink>
                 </div>
                 <div className={`${styles.sideBlock}`}>
-                    <NavLink to='/projects' className={`${styles.textColor}`}> MyProjects </NavLink>
+                    <NavLink to='/projects' className={`${styles.textColor}`}> Projects </NavLink>
                 </div>
                 <div className={`${styles.sideBlock}`}>
-                    <NavLink to='/tasks' className={`${styles.textColor}`}> MyTasks </NavLink>
+                    <NavLink to='/tasks' className={`${styles.textColor}`}> Tasks </NavLink>
                 </div>
             </nav>
 

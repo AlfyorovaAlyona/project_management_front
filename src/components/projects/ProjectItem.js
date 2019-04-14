@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProjectItem.module.css';
-import DeleteUnprocessedProjectButton from "./DeleteUnprocessedProjectButton";
+import DeleteFinishedProjectButton from "./DeleteFinishedProjectButton";
 
 const ProjectItem= (props) => {
     return (
@@ -15,11 +15,11 @@ const ProjectItem= (props) => {
             <br/>
             deadline: {props.deadline}
             <br/>
-
+            status: {props.status}
             <br/>
             tasks: {props.tasks}
-            <DeleteUnprocessedProjectButton status={props.status}
-                                        deleteUnprocessedProject={props.deleteUnprocessedProject}/>
+            <DeleteFinishedProjectButton status={props.status}
+                                        deleteFinishedProject={props.deleteFinishedProject}/>
         </div>
     )
 };
