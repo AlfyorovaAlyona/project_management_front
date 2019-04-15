@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import TaskList from './TaskList';
+import TaskPage from "./TaskPage";
 
 let mapStageToProps = (state) => {
     return {
@@ -12,6 +12,6 @@ let mapDispatchToProps = (dispatch) => {
 
 };
 
-let TaskPageContainer = connect(mapStageToProps, mapDispatchToProps)(TaskList);
+let TaskPageContainer = connect(mapStageToProps, mapDispatchToProps)(TaskPage);
 
 export default TaskPageContainer;

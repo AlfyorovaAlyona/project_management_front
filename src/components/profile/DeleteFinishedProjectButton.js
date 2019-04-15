@@ -4,7 +4,7 @@ const DeleteFinishedProjectButton = (props) => {
     if (props.status === 1) {
         return (
             <button onClick={() => props.deleteFinishedProject(props.index)}>
-                Delete
+                Delete Project
             </button>
         )
     } else {

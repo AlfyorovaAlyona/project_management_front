@@ -1,6 +1,11 @@
-const DELETE_FINISHED_PROJECT = 'DELETE_FINISHED_PROJECT';
-const SET_MUST_FETCH_PROJECTS = 'SET_MUST_FETCH_PROJECTS';
+import axios from "axios";
 
+const SET_MUST_FETCH_PROJECTS = 'SET_MUST_FETCH_PROJECTS';
+const FETCH_PROJECTS = "FETCH_PROJECTS";
+const FETCH_PROJECTS_PENDING = "FETCH_PROJECTS_PENDING";
+const FETCH_PROJECTS_REJECTED = "FETCH_PROJECTS_REJECTED";
+const FETCH_PROJECTS_FULFILLED = "FETCH_PROJECTS_FULFILLED";
+/*
 let initialState = {
     projects: [
         {
@@ -63,45 +68,67 @@ let initialState = {
 
         }
 ]
+};*/
+
+let initialState = {
+    //todo hack
+    mustFetch: true,
+
+    fetching: false,
+    fetched: false,
+    error: null,
+
+    projects: []
 };
 
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-      case DELETE_FINISHED_PROJECT:
-          return deleteFinishedProject(state, action.projectId);
+      case SET_MUST_FETCH_PROJECTS:
+          return {
+              ...state,
+              mustFetch: action.newValue
+          };
+
+      case FETCH_PROJECTS_PENDING:
+          return {
+              ...state,
+              fetching: false,
+              error: null
+          };
+
+      case FETCH_PROJECTS_REJECTED:
+          return {
+              ...state,
+              fetching: false,
+              error: action.error
+          };
+
+      case FETCH_PROJECTS_FULFILLED:
+          return {
+              ...state,
+              fetching: false,
+              fetched: true,
+              projects: action.payload.data
+          };
+
       default:
           return state;
   }  
 };
 
-const deleteFinishedProject = (state, projectId) => {
-    let stateCopy = {...state};
-    stateCopy.projects = [...stateCopy.projects];
-
-    let projectToDelete = findByProjectId(stateCopy.projects, projectId);
-    let projectToDeleteIndex = stateCopy.projects.indexOf(projectToDelete);
-
-    stateCopy.projects.splice(projectToDeleteIndex, 1);
-
-    return stateCopy;
-};
-
-const findByProjectId = (array, projectId) => {
-    return array.filter(item => item.id === projectId)[0];
-};
 
 //Action Creators
-export const deleteFinishedProjectCreator = (projectId) => {
-    return {
-        type: DELETE_FINISHED_PROJECT,
-        projectId: projectId
-    }
-};
-
-export const setMustFetchCreator = (newValue) => {
+export const setMustFetchProjectsCreator = (newValue) => {
     return {
         type: SET_MUST_FETCH_PROJECTS,
         newValue: newValue
+    }
+};
+
+export const fetchProjectsCreator = () => {
+    return {
+        type: FETCH_PROJECTS,
+        payload: axios.get("http://localhost:8080/projects")
     }
 };
 

@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import promise from "redux-promise-middleware";
 import thunk from "redux-thunk";
-import projectsReducer from "./projectReducer";
+import projectsReducer from "./projectsReducer";
 import tasksReducer from "./tasksReducer";
 import profileReducer from "./profileReducer";
 

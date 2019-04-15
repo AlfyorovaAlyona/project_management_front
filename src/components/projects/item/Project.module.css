@@ -1,0 +1,13 @@
+.projectWrapper {
+    display: grid;
+}
+
+.projectId {
+    grid-area: id;
+
+}
+
+.description {
+    grid-area: description;
+
+}

@@ -20,7 +20,7 @@ class SendHttpSample extends Component {
 
     handleClick () {
         console.log("Click");
-        axios.get('http://localhost:8080/user/1')
+        axios.get('http://localhost:8080/projects')
             .then(response => {
                 console.log(response);
                 console.log(response.data);

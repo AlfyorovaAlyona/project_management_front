@@ -1,6 +1,3 @@
-import {connect} from "react-redux";
-
-const ADD_TASK = 'ADD_TASK';
 
 let initialState = {
     tasks: [

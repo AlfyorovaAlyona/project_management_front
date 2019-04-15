@@ -12,11 +12,9 @@ const ProfileItem = (props) => {
             <br/>
             email: {props.email}
             <br/>
-            tasks: {props.tasks}
+            myTasks: {props.tasks}
             <br/>
-            projects: {props.projects}
-
-
+            myProjects: {props.projects}
         </div>;
 
     else return <div className={`${styles.profileItem} ${styles.textColor}`}>

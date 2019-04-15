@@ -1,0 +1,18 @@
+.taskWrapper {
+    display: grid;
+
+
+}
+
+.description {
+    grid-area: des;
+
+}
+
+.name {
+    grid-area: name;
+}
+
+.projectId {
+    grid-area: pi;
+}
