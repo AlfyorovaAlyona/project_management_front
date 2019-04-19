@@ -1,10 +1,14 @@
 import React from 'react';
-import styles from './ProfileItem.module.css'
+import styles from './Profile.module.css'
 
-const ProfileItem = (props) => {
+const callUser = () => {
+    alert("Write to user")
+};
+
+const Profile = (props) => {
     if (props.tasks || props.projects != null)
-        return <div className={`${styles.profileItem} ${styles.textColor}`}>
-            userId: {props.userId}
+        return <div className={`${styles.profileWrapper} ${styles.textColor}`}>
+            userId: {props.id}
             <br/>
             name: {props.name}
             <br/>
@@ -17,8 +21,8 @@ const ProfileItem = (props) => {
             myProjects: {props.projects}
         </div>;
 
-    else return <div className={`${styles.profileItem} ${styles.textColor}`}>
-        userId: {props.userId}
+    else return <div onClick={callUser} className="list-group-item list-group-item-action flex-column align-items-start" title={"Write to user on email"}>
+        userId: {props.id}
         <br/>
         name: {props.name}
         <br/>
@@ -29,4 +33,4 @@ const ProfileItem = (props) => {
         </div>
 };
 
-export default ProfileItem;
+export default Profile;

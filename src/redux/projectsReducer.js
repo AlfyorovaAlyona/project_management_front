@@ -5,70 +5,7 @@ const FETCH_PROJECTS = "FETCH_PROJECTS";
 const FETCH_PROJECTS_PENDING = "FETCH_PROJECTS_PENDING";
 const FETCH_PROJECTS_REJECTED = "FETCH_PROJECTS_REJECTED";
 const FETCH_PROJECTS_FULFILLED = "FETCH_PROJECTS_FULFILLED";
-/*
-let initialState = {
-    projects: [
-        {
-            id: 1,
-            creatorId: 1,
-            name: "work",
-            status: 0,
-            description: "do",
-            deadline: "2019-03-31 23:00:43.573000",
-            tasks: [
-                {
-                    id: 1,
-                    name: "good",
-                    salary: 10,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do something"
-                },
-                {
-                    id: 2,
-                    name: "bad",
-                    salary: 100,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do nothing"
-                },
-                {
-                    id: 3,
-                    name: "bad",
-                    salary: 100,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do nothing"
-                }
-            ]
-        },
 
-        {
-            id: 2,
-            creatorId: 2,
-            name: "work",
-            status: 1,
-            description: "do",
-            deadline: "2019-03-31 23:00:43.573000",
-            tasks: [
-                {
-
-                    id: 4,
-                    name: "new",
-                    salary: 1000,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do nothing"
-                }
-            ]
-
-        }
-]
-};*/
 
 let initialState = {
     //todo hack
@@ -131,5 +68,7 @@ export const fetchProjectsCreator = () => {
         payload: axios.get("http://localhost:8080/projects")
     }
 };
+
+
 
 export default projectsReducer;

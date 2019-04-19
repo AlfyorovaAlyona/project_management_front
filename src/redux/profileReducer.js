@@ -1,106 +1,107 @@
-const ADD_TASK = "ADD_TASK";
+import axios from "axios";
+
 const DELETE_FINISHED_PROJECT = 'DELETE_FINISHED_PROJECT';
-const DELETE_DONE_TASK = "DELETE_DONE_TASK";
+
+const SET_MUST_FETCH_MY_PROJECTS = "SET_MUST_FETCH_MY_PROJECTS";
+const FETCH_MY_PROJECTS = "FETCH_MY_PROJECTS";
+const FETCH_MY_PROJECTS_PENDING = "FETCH_MY_PROJECTS_PENDING";
+const FETCH_MY_PROJECTS_REJECTED = "FETCH_MY_PROJECTS_REJECTED";
+const FETCH_MY_PROJECTS_FULFILLED = "FETCH_MY_PROJECTS_FULFILLED";
+
+const SET_MUST_FETCH_MY_TASKS = "SET_MUST_FETCH_MY_TASKS";
+const FETCH_MY_TASKS = "FETCH_MY_TASKS";
+const FETCH_MY_TASKS_PENDING = "FETCH_MY_TASKS_PENDING";
+const FETCH_MY_TASKS_REJECTED = "FETCH_MY_TASKS_REJECTED";
+const FETCH_MY_TASKS_FULFILLED = "FETCH_MY_TASKS_FULFILLED";
 
 
 let initialState = {
-    userId: 1,
-    name: "Alyona",
-    surname: "Alfyorova",
-    email: "@",
+    //todo hack
+    mustFetchTasks: true,
+    mustFetchProjects: true,
 
-    tasks: [
-        {
-            id: 1,
-            name: "good",
-            salary: 10,
-            status: 2,
-            projectId: 1,
-            deadline: "2019-04-31 23:00:43.573000",
-            description: "do something"
-        }
-    ],
+    userId: null,
+    fetching: false,
+    fetched: false,
+    error: null,
 
-    projects: [
-        {
-            id: 1,
-            creatorId: 1,
-            name: "work",
-            status: 1,
-            description: "do",
-            deadline: "2019-03-31 23:00:43.573000",
-            tasks: [
-                {
-                    id: 1,
-                    name: "good",
-                    salary: 10,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do something"
-                },
-                {
-                    id: 2,
-                    name: "bad",
-                    salary: 100,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do nothing"
-                },
-                {
-                    id: 3,
-                    name: "bad",
-                    salary: 100,
-                    status: 0,
-                    projectId: 1,
-                    deadline: "2019-04-31 23:00:43.573000",
-                    description: "do nothing"
-                }
-            ]
+    name: null,
+    surname: null,
+    email: null,
 
-        },
-        {
-            id: 1,
-            creatorId: 1,
-            name: "work",
-            status: 1,
-            description: "do",
-            deadline: "2019-03-31 23:00:43.573000",
-            tasks: []
-        }
-
-    ]
+    projects: [],
+    tasks: []
 };
+
 
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
+        case SET_MUST_FETCH_MY_PROJECTS:
+            return {
+                ...state,
+                mustFetchProjects: action.newValue
+            };
+        case SET_MUST_FETCH_MY_TASKS:
+            return {
+                ...state,
+                mustFetchTasks: action.newValue
+            };
+        case FETCH_MY_PROJECTS_PENDING:
+            return {
+                ...state,
+                fetching: false,
+                error: null
+            };
+
+        case FETCH_MY_PROJECTS_REJECTED:
+            return {
+                ...state,
+                fetching: false,
+                error: action.error
+            };
+
+        case FETCH_MY_PROJECTS_FULFILLED:
+            return {
+                ...state,
+                fetching: false,
+                fetched: true,
+                projects: action.payload.data
+            };
+
+        case FETCH_MY_TASKS_PENDING:
+            return {
+                ...state,
+                fetching: false,
+                error: null
+            };
+
+        case FETCH_MY_TASKS_REJECTED:
+            return {
+                ...state,
+                fetching: false,
+                error: action.error
+            };
+
+        case FETCH_MY_TASKS_FULFILLED:
+            return {
+                ...state,
+                fetching: false,
+                fetched: true,
+                tasks: action.payload.data
+            };
+
         case DELETE_FINISHED_PROJECT:
             return deleteFinishedProject(state, action.projectId);
-        case DELETE_DONE_TASK:
-            return deleteDoneTask(state, action.taskId);
 
         default:
             return state;
     }
 };
 
-const deleteDoneTask = (state = initialState, taskId) => {
-    let stateCopy = {...state};
-    stateCopy.tasks = [...stateCopy.tasks];
-
-    let taskToDelete = findById(stateCopy.tasks, taskId);
-    let taskToDeleteIndex = stateCopy.tasks.indexOf(taskToDelete);
-
-    stateCopy.tasks.splice(taskToDeleteIndex, 1);
-
-    return stateCopy;
-};
-
 
 const deleteFinishedProject = (state, projectId) => {
     let stateCopy = {...state};
-    stateCopy.projects = [...stateCopy.projects];
+    stateCopy.projects = [...state.projects];
 
     let projectToDelete = findById(stateCopy.projects, projectId);
     let projectToDeleteIndex = stateCopy.projects.indexOf(projectToDelete);
@@ -114,7 +115,36 @@ const findById = (array, Id) => {
     return array.filter(item => item.id === Id)[0];
 };
 
+
 //Action Creators
+export const setMustFetchMyProjectsCreator = (newValue) => {
+    return {
+        type: SET_MUST_FETCH_MY_PROJECTS,
+        newValue: newValue
+    }
+};
+
+export const setMustFetchMyTasksCreator = (newValue) => {
+    return {
+        type: SET_MUST_FETCH_MY_TASKS,
+        newValue: newValue
+    }
+};
+
+export const fetchMyProjectsCreator = () => {
+    return {
+        type: FETCH_MY_PROJECTS,
+        payload: axios.get("http://localhost:8080/projects/user/1")
+    }
+};
+
+export const fetchMyTasksCreator = () => {
+    return {
+        type: FETCH_MY_TASKS,
+        payload: axios.get("http://localhost:8080/users/tasks/1")
+    }
+};
+
 export const deleteFinishedProjectCreator = (projectId) => {
     return {
         type: DELETE_FINISHED_PROJECT,
@@ -122,12 +152,7 @@ export const deleteFinishedProjectCreator = (projectId) => {
     }
 };
 
-export const deleteDoneTaskCreator = (taskId) => {
-    return {
-        type: DELETE_DONE_TASK,
-        taskId: taskId
-    }
-}
+
 
 export default profileReducer;
 

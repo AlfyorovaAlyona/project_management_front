@@ -1,13 +1,61 @@
 .projectWrapper {
     display: grid;
+
+    grid-template-areas: "id name"
+    "des status"
+    "dead ci"
+    "tasks tasks ";
+    grid-template-columns: 4fr 10fr;
+    grid-template-rows: 1fr 1fr ;
+    border-bottom: 1px solid;
+    border-top:  1px solid;
+    border-left: 2px solid;
+    border-right:  2px solid;
+    border-color: #41046F;
+}
+
+.textColor {
+    color: black;
 }
 
 .projectId {
     grid-area: id;
+    padding: 0.5rem;
+
+}
+
+.name {
+    grid-area: name;
+    padding: 0.5rem;
 
 }
 
 .description {
-    grid-area: description;
+    grid-area: des;
+    padding: 0.5rem;
 
+}
+
+.projectStatus {
+    grid-area: status;
+    padding: 0.5rem;
+
+}
+
+.deadline {
+    grid-area: dead;
+    padding: 0.5rem;
+
+}
+
+.creatorId {
+    grid-area: ci;
+    padding: 0.5rem;
+
+}
+
+.tasks {
+    grid-area: tasks;
+    padding: 2rem;
+    padding-left: 200px;
 }

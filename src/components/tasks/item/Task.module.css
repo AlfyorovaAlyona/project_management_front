@@ -1,18 +1,81 @@
 .taskWrapper {
     display: grid;
 
+    grid-template-areas: "id status b" "des des b" "name pi b" "sal dead d" "users users users";
+    grid-template-columns: 3fr 3fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border-bottom: 1px solid;
+    border-top:  1px solid;
+    border-left: 2px solid;
+    border-right:  2px solid;
+    border-color: #41046F;
+}
 
+.textColor {
+    color: black;
+}
+
+.taskStatus {
+    grid-area: status;
+    padding: 0.5rem;
+
+}
+
+.salary {
+    grid-area: sal;
+    padding: 0.5rem;
+
+}
+
+.deadline {
+    grid-area: dead;
+    padding: 0.5rem;
+
+}
+
+.id {
+    grid-area: id;
+    padding: 0.5rem;
 }
 
 .description {
     grid-area: des;
+    padding: 0.5rem;
 
 }
 
 .name {
     grid-area: name;
+    padding: 0.5rem;
 }
 
 .projectId {
     grid-area: pi;
+    padding: 0.5rem;
+
+}
+
+.addButton {
+    grid-area: b;
+    grid-row: 2;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.doneButton {
+    grid-area: d;
+    grid-row: 2;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.taskUsers {
+    grid-area: users;
+    padding: 0.5rem;
+    padding-left: 200px;
+}
+
+.callButton {
+    grid-area: c;
+    grid-row: 5;
 }

@@ -1,0 +1,13 @@
+.profileWrapper {
+    display: grid;
+
+    border-bottom: 1px solid;
+    border-top:  1px solid;
+    border-left: 2px solid;
+    border-right:  2px solid;
+    border-color: #41046F;
+}
+
+.textColor {
+    color: black;
+}

@@ -11,7 +11,7 @@ let mapStageToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        setMustFetch: (newValue) => {
+        setMustFetchProjects: (newValue) => {
             dispatch(setMustFetchProjectsCreator(newValue));
         },
         fetchProjects: () => {

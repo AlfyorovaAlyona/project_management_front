@@ -8,9 +8,9 @@
     padding: .7em 1.5em;
 }
 
-.sideBlock:active { background: #F8B79B; }
-.sideBlock:hover { background: #9D4A27; }
+.sideBlock:active { background: white; }
+.sideBlock:hover { background: #A668D5; }
 
 .textColor {
-    color: black;
+    color: white;
 }

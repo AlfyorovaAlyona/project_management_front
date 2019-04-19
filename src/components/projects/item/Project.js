@@ -1,29 +1,30 @@
 import React from 'react';
 import style from "./Project.module.css"
+import ProjectStatus from "./ProjectStatus";
 
 const Project = (props) => {
     return (
-        <div className={`${style.projectWrapper}`}>
+        <div className={`${style.projectWrapper} ${style.textColor}`}>
             <div className={`${style.projectId}`}>
                 Project #{props.id}
             </div>
-            <div>
+            <div className={`${style.name}`}>
                 {props.name}
             </div>
-            <div>
-                {props.description}
+            <div className={`${style.description}`}>
+                Description: {props.description}
             </div>
-            <div>
-                {props.deadline}
+            <div className={`${style.deadline}`}>
+                Deadline: {props.deadline}
             </div>
-            <div>
-                {props.creatorId}
+            <div className={`${style.creatorId}`}>
+                Creator: #{props.creatorId}
             </div>
-            <div>
-                {props.status}
+            <div className={`${style.projectStatus}`}>
+                Status: <ProjectStatus statusCode={props.statusCode}/>
             </div>
-            <div>
-                {props.tasks}
+            <div className={`${style.tasks}`}>
+                Tasks: {props.tasks}
             </div>
         </div>
     )

@@ -10,19 +10,32 @@
 .header {
   grid-area: header;
   font-size: xx-large;
-  margin: 5px;
-  background-color: #F8B79B;
+  margin: 1px;
+  background-color: #A668D5;
+  color: white;
 }
 
 .sidebar {
   grid-area: nav;
-  margin: 5px;
-  background-color: #B58571;
+  margin: 1px;
+  background-color: #41046F;
 }
 
 .content {
   grid-area: content;
-  margin: 5px;
-  background-color: #F8C8B4;
+  margin: 3px;
+  background-color: white;
+}
+
+.textColor {
+  color: black;
+}
+
+.subHeader {
+  grid-area: header;
+  font-size: xx-large;
+  margin: 1px;
+  background-color: #41046F;
+  color: white;
 }
 
