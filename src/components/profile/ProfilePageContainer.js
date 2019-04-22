@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import ProfilePage from './ProfilePage';
 import { deleteFinishedProjectCreator,   setMustFetchMyProjectsCreator,
         setMustFetchMyTasksCreator, fetchMyProjectsCreator,         fetchMyTasksCreator} from "../../redux/profileReducer";
-import {removeTaskFromUserCreator, setMustFetchTasksCreator, fetchTasksCreator} from "../../redux/tasksReducer";
+import {removeTaskFromUserCreator, setMustFetchTasksCreator} from "../../redux/tasksReducer";
 
 let mapStageToProps = (state) => {
     return {
@@ -38,8 +38,8 @@ let mapDispatchToProps = (dispatch) => {
         },
         removeTaskFromUser: (taskId) => {
             dispatch(removeTaskFromUserCreator(taskId));
-            //dispatch(setMustFetchMyTasksCreator(true));
-            //dispatch(setMustFetchTasksCreator(true));
+            dispatch(setMustFetchMyTasksCreator(true));
+            dispatch(setMustFetchTasksCreator(true));
         }
     }
 };

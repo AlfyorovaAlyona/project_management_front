@@ -6,7 +6,7 @@ import {
     setMustFetchTasksCreator,
     removeTaskFromUserCreator
 } from "../../redux/tasksReducer";
-import {setMustFetchMyProjectsCreator, setMustFetchMyTasksCreator} from "../../redux/profileReducer";
+import {setMustFetchMyTasksCreator} from "../../redux/profileReducer";
 
 let mapStageToProps = (state) => {
     return {
@@ -16,21 +16,27 @@ let mapStageToProps = (state) => {
 };
 
 let mapDispatchToProps = (dispatch) => {
+    console.log('dispatch');
+    console.log(dispatch);
     return {
         setMustFetchTasks: (newValue) => {
+            console.log("set MustFetch tasks" + newValue);
             dispatch(setMustFetchTasksCreator(newValue));
         },
         fetchTasks: () => {
             dispatch(fetchTasksCreator());
         },
         addTaskToUser: (taskId) => {
+            console.log("set MustFetch tasks ");
+
             dispatch(addTaskToUserCreator(taskId));
-            dispatch(setMustFetchTasksCreator(true));
+            console.log("set MustFetch tasks true");
+
+            //dispatch(setMustFetchTasksCreator(true));
+            //dispatch(setMustFetchMyTasksCreator(true));
         },
         removeTaskFromUser: (taskId) => {
             dispatch(removeTaskFromUserCreator(taskId));
-            dispatch(setMustFetchTasksCreator(true));
-            dispatch(setMustFetchMyTasksCreator(true));
         }
     };
 };

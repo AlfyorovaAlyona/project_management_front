@@ -11,19 +11,19 @@
   grid-area: header;
   font-size: xx-large;
   margin: 1px;
-  background-color: #A668D5;
+  background-color: #41046F;
   color: white;
 }
 
 .sidebar {
   grid-area: nav;
   margin: 1px;
-  background-color: #41046F;
+  background-color: #A668D5;
 }
 
 .content {
   grid-area: content;
-  margin: 3px;
+  margin: 1px;
   background-color: white;
 }
 

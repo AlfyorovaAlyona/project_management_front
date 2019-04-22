@@ -1,6 +1,7 @@
 import React from 'react';
 import style from "./Project.module.css"
 import ProjectStatus from "./ProjectStatus";
+import {convertJsDateToStringToDisplay} from "../../lib";
 
 const Project = (props) => {
     return (
@@ -15,7 +16,7 @@ const Project = (props) => {
                 Description: {props.description}
             </div>
             <div className={`${style.deadline}`}>
-                Deadline: {props.deadline}
+                Deadline: {convertJsDateToStringToDisplay(props.deadline)}
             </div>
             <div className={`${style.creatorId}`}>
                 Creator: #{props.creatorId}

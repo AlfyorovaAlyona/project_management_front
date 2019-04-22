@@ -5,6 +5,13 @@ import Project from "../projects/item/Project";
 import ProfileHeader from "../headers/ProfileHeader";
 
 const ProfilePage = (props) => {
+    const func = () => {
+        props.fetchMyTasks();
+        props.fetchMyProjects();
+    };
+
+    setTimeout(func, 1000);
+
     if (props.mustFetchTasks || props.mustFetch) {
         props.fetchMyTasks();
         props.setMustFetchMyTasks(false);
@@ -65,9 +72,9 @@ const ProfilePage = (props) => {
             </div>
             <iv>
                 <Profile userId={props.id}
-                             name={props.name}
-                             surname={props.surname}
-                             email={props.email} />;
+                         name={props.name}
+                         surname={props.surname}
+                         email={props.email} />
             </iv>
 
         </div>)

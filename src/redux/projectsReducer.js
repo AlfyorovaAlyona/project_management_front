@@ -41,17 +41,34 @@ const projectsReducer = (state = initialState, action) => {
           };
 
       case FETCH_PROJECTS_FULFILLED:
+          let projectDtos = prepareProjectsToDisplay(action.payload.data);
           return {
               ...state,
               fetching: false,
               fetched: true,
-              projects: action.payload.data
+              projects: projectDtos
           };
 
       default:
           return state;
   }  
 };
+
+const prepareProjectsToDisplay = (projectDtos) => {
+    projectDtos.forEach(o => {
+        o.deadline = new Date(o.deadline.substring(0, o.deadline.indexOf('Z') + 1));
+    });
+    projectDtos.forEach(o => {
+        if (o.tasks != null) {
+            o.tasks.forEach(o => {
+                o.deadline = new Date(o.deadline.substring(0, o.deadline.indexOf('Z') + 1));
+            })
+        }
+    });
+
+    return projectDtos;
+};
+
 
 
 //Action Creators

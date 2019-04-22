@@ -1,17 +1,21 @@
 import React from 'react';
 import style from "./Task.module.css";
 import TaskStatus from "./TaskStatus";
+import {convertJsDateToStringToDisplay} from "../../lib";
 
 const Task = (props) => {
 
     const removeTaskFromUser = () => {
         props.removeTaskFromUser(props.id);
-        alert("Task has done")
     };
 
     const addTaskToUser = () => {
         props.addTaskToUser(props.id);
-        alert("task was added to user");
+        disableBtn();
+    };
+
+    const disableBtn = () => {
+        document.getElementById(props.id).disabled = true;
     };
 
     //if (props.hidden) {
@@ -31,7 +35,7 @@ const Task = (props) => {
                     Description: {props.description}
                 </div>
                 <div className={`${style.deadline}`}>
-                    Deadline: {props.deadline}
+                    Deadline: {convertJsDateToStringToDisplay(props.deadline)}
                 </div>
                 <div className={`${style.projectId}`}>
                     Of project #{props.projectId}
@@ -43,11 +47,8 @@ const Task = (props) => {
                     Status: <TaskStatus statusCode={props.statusCode}/>
                 </div>
                 <div className={`${style.addButton}`}>
-                    <button type="button" className="btn btn-dark" onClick={addTaskToUser}>
+                    <button id={props.id} type="button" className="btn btn-dark" onClick={addTaskToUser}>
                         Do it!
-                    </button>
-                    <button type="button" className="btn btn-dark" onClick={removeTaskFromUser}>
-                        Done!
                     </button>
                 </div>
                 <div className={`${style.taskUsers}`}>
@@ -72,9 +73,9 @@ const Task = (props) => {
                 Name: {props.name}
             </h1>
 
-            <p className={`${style.deadline}`}>
-                Deadline: {props.deadline}
-            </p>
+            <div className={`${style.deadline}`}>
+                Deadline: {convertJsDateToStringToDisplay(props.deadline)}
+            </div>
             <p className={`${style.salary}`}>
                 Payment: {props.salary}
             </p>
@@ -108,9 +109,9 @@ const Task = (props) => {
                         Name: {props.name}
                     </h1>
 
-                    <p className={`${style.deadline}`}>
-                        Deadline: {props.deadline}
-                    </p>
+                    <div className={`${style.deadline}`}>
+                        Deadline: {convertJsDateToStringToDisplay(props.deadline)}
+                    </div>
                     <p className={`${style.salary}`}>
                         Payment: {props.salary}
                     </p>

@@ -8,8 +8,12 @@
     padding: .7em 1.5em;
 }
 
-.sideBlock:active { background: white; }
-.sideBlock:hover { background: #A668D5; }
+.sideBlock:active {
+    background: white;
+}
+.sideBlock:hover {
+    background: #41046F;
+}
 
 .textColor {
     color: white;

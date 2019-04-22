@@ -21,18 +21,19 @@ const ProjectsPage = (props) => {
                                              creatorId={project.creatorId}
                                              tasks={project.tasks
                                                 .map((task) => { return <Task  id={task.id}
-                                                                                button={false}
-                                                                               isItProject={true}
-                                                                               key={task.id}
-                                                                                name={task.name}
-                                                                                description={task.description}
-                                                                                deadline={task.deadline}
-                                                                                salary={task.salary}
-                                                                                statusCode={task.statusCode}
-                                                                                projectId={task.projectId}/>})}/>);
+                                                                                        key={task.id}
+                                                                                        button={false}
+                                                                                        isItProject={true}
+                                                                                        name={task.name}
+                                                                                        description={task.description}
+                                                                                        deadline={task.deadline}
+                                                                                        salary={task.salary}
+                                                                                        statusCode={task.statusCode}
+                                                                                        projectId={task.projectId}/>})}/>);
                                     else if (project.tasks.length === 0) return (
                                         <Project id={project.id}
                                                  key={project.id}
+                                                 isItProject={false}
                                                  name={project.name}
                                                  description={project.description}
                                                  deadline={project.deadline}

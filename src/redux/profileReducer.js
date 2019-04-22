@@ -61,11 +61,12 @@ const profileReducer = (state = initialState, action) => {
             };
 
         case FETCH_MY_PROJECTS_FULFILLED:
+            let projectDtos = prepareMyProjectsToDisplay(action.payload.data);
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
-                projects: action.payload.data
+                projects: projectDtos
             };
 
         case FETCH_MY_TASKS_PENDING:
@@ -83,11 +84,12 @@ const profileReducer = (state = initialState, action) => {
             };
 
         case FETCH_MY_TASKS_FULFILLED:
+            let taskDtos = prepareMyTasksToDisplay(action.payload.data);
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
-                tasks: action.payload.data
+                tasks: taskDtos
             };
 
         case DELETE_FINISHED_PROJECT:
@@ -96,6 +98,28 @@ const profileReducer = (state = initialState, action) => {
         default:
             return state;
     }
+};
+
+const prepareMyTasksToDisplay = (tasksDtos) => {
+    tasksDtos.forEach(o => {
+        o.deadline = new Date(o.deadline.substring(0, o.deadline.indexOf('Z') + 1));
+    });
+    return tasksDtos;
+};
+
+const prepareMyProjectsToDisplay = (projectDtos) => {
+    projectDtos.forEach(o => {
+        o.deadline = new Date(o.deadline.substring(0, o.deadline.indexOf('Z') + 1));
+    });
+    projectDtos.forEach(o => {
+        if (o.tasks != null) {
+            o.tasks.forEach(o => {
+                o.deadline = new Date(o.deadline.substring(0, o.deadline.indexOf('Z') + 1));
+            })
+        }
+    });
+
+    return projectDtos;
 };
 
 
